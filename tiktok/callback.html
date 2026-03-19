@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TikTok OAuth Callback</title>
+  <style>
+    :root {
+      --bg: #f6f3ee;
+      --card: #fffdf9;
+      --ink: #1d1d1f;
+      --muted: #5f5a53;
+      --line: #d9d1c7;
+      --accent: #b84c2a;
+      --ok: #1f6b47;
+      --warn: #8a3c1d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: linear-gradient(180deg, #f3ede4 0%, var(--bg) 100%);
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 80px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 32px;
+      box-shadow: 0 20px 60px rgba(29, 29, 31, 0.08);
+    }
+
+    h1, h2 {
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+    }
+
+    h2 {
+      margin: 28px 0 10px;
+      color: var(--accent);
+      font-size: 1.2rem;
+    }
+
+    .meta,
+    .muted {
+      color: var(--muted);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+      font-size: 0.9rem;
+    }
+
+    .success {
+      background: rgba(31, 107, 71, 0.12);
+      color: var(--ok);
+    }
+
+    .warning {
+      background: rgba(138, 60, 29, 0.12);
+      color: var(--warn);
+    }
+
+    dl {
+      margin: 0;
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 10px 14px;
+    }
+
+    dt {
+      font-weight: 700;
+    }
+
+    dd {
+      margin: 0;
+      overflow-wrap: anywhere;
+    }
+
+    code,
+    pre {
+      font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+    }
+
+    pre {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      overflow: auto;
+      margin: 0;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    @media (max-width: 700px) {
+      dl {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="card">
+      <div id="badge" class="badge warning">Awaiting TikTok redirect</div>
+      <h1>TikTok OAuth Callback</h1>
+      <p class="meta">This page displays the authorization response returned by TikTok after the user grants or rejects access.</p>
+
+      <h2>Authorization Result</h2>
+      <dl>
+        <dt>Code</dt>
+        <dd id="code-value">Not provided</dd>
+
+        <dt>Scopes</dt>
+        <dd id="scopes-value">Not provided</dd>
+
+        <dt>State</dt>
+        <dd id="state-value">Not provided</dd>
+
+        <dt>Error</dt>
+        <dd id="error-value">Not provided</dd>
+
+        <dt>Error Description</dt>
+        <dd id="error-description-value">Not provided</dd>
+      </dl>
+
+      <h2>Raw Query Parameters</h2>
+      <pre id="raw-params">{}</pre>
+
+      <h2>Next Step</h2>
+      <p class="muted">For production use, the authorization <code>code</code> should be sent to the backend and exchanged for tokens through TikTok's token endpoint. This review page only exposes the callback payload for demonstration.</p>
+      <p><a href="../index.html">Back to review entry page</a></p>
+    </section>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const entries = Object.fromEntries(params.entries());
+    const code = params.get("code");
+    const error = params.get("error");
+    const badge = document.getElementById("badge");
+
+    document.getElementById("code-value").textContent = code || "Not provided";
+    document.getElementById("scopes-value").textContent = params.get("scopes") || "Not provided";
+    document.getElementById("state-value").textContent = params.get("state") || "Not provided";
+    document.getElementById("error-value").textContent = error || "Not provided";
+    document.getElementById("error-description-value").textContent = params.get("error_description") || "Not provided";
+    document.getElementById("raw-params").textContent = JSON.stringify(entries, null, 2);
+
+    if (code) {
+      badge.textContent = "Authorization code received";
+      badge.className = "badge success";
+    } else if (error) {
+      badge.textContent = "Authorization returned an error";
+      badge.className = "badge warning";
+    }
+  </script>
+</body>
+</html>
