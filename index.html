@@ -3,27 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mai Works | TikTok Login Review</title>
+  <title>Mai Works | TikTok Login + Content Posting Review</title>
   <style>
     :root {
       --bg: #efe7dc;
-      --paper: rgba(255, 252, 247, 0.88);
+      --paper: rgba(255, 252, 247, 0.9);
       --ink: #181512;
       --muted: #62584d;
       --line: rgba(89, 71, 54, 0.18);
       --accent: #bd4f2d;
       --accent-dark: #8f371d;
+      --accent-soft: rgba(189, 79, 45, 0.1);
+      --ok: #1f6b47;
+      --warn: #8a3c1d;
       --shadow: 0 24px 70px rgba(32, 20, 10, 0.12);
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
@@ -36,14 +33,12 @@
     }
 
     main {
-      max-width: 1100px;
+      max-width: 1180px;
       margin: 0 auto;
       padding: 28px 18px 72px;
     }
 
-    .hero,
-    .panel,
-    .note {
+    .hero, .panel, .note {
       background: var(--paper);
       backdrop-filter: blur(10px);
       border: 1px solid var(--line);
@@ -53,7 +48,7 @@
 
     .hero {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.2fr 0.8fr;
       gap: 22px;
       padding: 28px;
       margin-bottom: 22px;
@@ -64,60 +59,26 @@
       margin-bottom: 10px;
       padding: 6px 10px;
       border-radius: 999px;
-      background: rgba(189, 79, 45, 0.1);
+      background: var(--accent-soft);
       color: var(--accent-dark);
       font-size: 0.85rem;
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
 
-    h1, h2, h3 {
-      line-height: 1.15;
-      margin: 0;
-    }
-
-    h1 {
-      font-size: clamp(2.3rem, 6vw, 4.6rem);
-      margin-bottom: 12px;
-    }
-
-    h2 {
-      font-size: 1.5rem;
-      margin-bottom: 16px;
-    }
-
-    p {
-      margin: 0 0 14px;
-      font-size: 1rem;
-    }
+    h1, h2, h3 { line-height: 1.15; margin: 0; }
+    h1 { font-size: clamp(2.2rem, 6vw, 4.4rem); margin-bottom: 12px; }
+    h2 { font-size: 1.5rem; margin-bottom: 16px; }
+    h3 { font-size: 1.05rem; margin-bottom: 8px; color: var(--accent-dark); }
+    p { margin: 0 0 14px; font-size: 1rem; }
 
     .lead {
       color: var(--muted);
-      max-width: 56ch;
-      font-size: 1.08rem;
+      max-width: 60ch;
+      font-size: 1.05rem;
     }
 
-    .stack {
-      display: grid;
-      gap: 16px;
-    }
-
-    .panel {
-      padding: 22px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
-      margin-bottom: 22px;
-    }
-
-    .stats {
-      display: grid;
-      gap: 14px;
-      align-content: start;
-    }
+    .stats, .stack { display: grid; gap: 14px; align-content: start; }
 
     .stat {
       padding: 16px 18px;
@@ -140,8 +101,20 @@
       word-break: break-word;
     }
 
-    form {
+    .grid {
       display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin-bottom: 22px;
+    }
+
+    .panel { padding: 22px; }
+
+    form { display: grid; gap: 14px; }
+
+    .two-up {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
     }
 
@@ -150,8 +123,7 @@
       font-size: 0.95rem;
     }
 
-    input,
-    textarea {
+    input, textarea, select {
       width: 100%;
       margin-top: 6px;
       padding: 12px 14px;
@@ -163,7 +135,7 @@
     }
 
     textarea {
-      min-height: 84px;
+      min-height: 96px;
       resize: vertical;
     }
 
@@ -174,8 +146,7 @@
       margin-top: 8px;
     }
 
-    button,
-    .link-button {
+    button, .link-button {
       appearance: none;
       border: 0;
       border-radius: 999px;
@@ -186,10 +157,7 @@
       transition: transform 140ms ease, background-color 140ms ease, opacity 140ms ease;
     }
 
-    button:hover,
-    .link-button:hover {
-      transform: translateY(-1px);
-    }
+    button:hover, .link-button:hover { transform: translateY(-1px); }
 
     .primary {
       background: var(--accent);
@@ -202,14 +170,20 @@
       border: 1px solid var(--line);
     }
 
-    code {
+    code, pre {
       font-family: "SFMono-Regular", Menlo, Consolas, monospace;
       font-size: 0.92em;
     }
 
-    ul {
-      padding-left: 18px;
+    pre {
       margin: 0;
+      padding: 14px;
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      overflow: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
     }
 
     .note {
@@ -223,15 +197,14 @@
       min-height: 1.5em;
     }
 
-    a {
-      color: var(--accent-dark);
-    }
+    .status.ok { color: var(--ok); }
+    .status.warn { color: var(--warn); }
 
-    @media (max-width: 860px) {
-      .hero,
-      .grid {
-        grid-template-columns: 1fr;
-      }
+    a { color: var(--accent-dark); }
+    ul { padding-left: 18px; margin: 0; }
+
+    @media (max-width: 920px) {
+      .hero, .grid, .two-up { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -240,65 +213,74 @@
     <section class="hero">
       <div>
         <span class="eyebrow">TikTok Review Site</span>
-        <h1>Web OAuth review flow for TikTok Login Kit</h1>
-        <p class="lead">This site is used to demonstrate a complete TikTok web OAuth login flow for app review. Users start sign-in from this page, authorize with TikTok, and return to a registered callback URL hosted on the same site.</p>
+        <h1>Login + Content Posting review flow</h1>
+        <p class="lead">This site is used to demonstrate an end-to-end TikTok integration for app review. It shows web OAuth login, sandbox authorization handling, token exchange, and a content-posting request flow for review/demo purposes.</p>
         <div class="actions">
-          <a class="link-button secondary" href="#config">Go to Login Setup</a>
+          <a class="link-button secondary" href="#oauth-panel">OAuth Setup</a>
+          <a class="link-button secondary" href="#posting-panel">Content Posting Demo</a>
           <a class="link-button secondary" href="tiktok/privacy-policy.html">Privacy Policy</a>
           <a class="link-button secondary" href="tiktok/terms-of-service.html">Terms of Service</a>
         </div>
       </div>
       <div class="stats">
         <div class="stat">
-          <span class="label">Product</span>
-          <div class="value">Login Kit</div>
+          <span class="label">Products</span>
+          <div class="value">Login Kit + Content Posting API</div>
         </div>
         <div class="stat">
-          <span class="label">Requested scope</span>
-          <div class="value"><code>user.info.basic</code></div>
+          <span class="label">Default scopes</span>
+          <div class="value"><code>user.info.basic,video.publish</code></div>
         </div>
         <div class="stat">
           <span class="label">Default callback</span>
           <div class="value" id="default-callback"></div>
         </div>
+        <div class="stat">
+          <span class="label">Sandbox demo note</span>
+          <div class="value">This page stores config only in local browser storage for review/demo workflows.</div>
+        </div>
       </div>
     </section>
 
     <section class="grid">
-      <section class="panel" id="config">
-        <h2>Start TikTok OAuth</h2>
-        <p>Enter the app settings from TikTok for Developers. These values stay only in this browser via local storage and are used to build the authorization URL.</p>
+      <section class="panel" id="oauth-panel">
+        <h2>1. Start TikTok OAuth</h2>
+        <p>Enter the TikTok app settings. These values stay only in this browser and are used to build the authorization URL. After TikTok redirects back, the callback page stores the authorization code for the posting demo below.</p>
         <form id="oauth-form">
-          <label>
-            Client Key
-            <input id="client-key" name="client-key" placeholder="TikTok client key" required>
-          </label>
-          <label>
-            Redirect URI
-            <input id="redirect-uri" name="redirect-uri" required>
-          </label>
-          <label>
-            Scope
-            <input id="scope" name="scope" value="user.info.basic" required>
-          </label>
-          <label>
-            State
-            <input id="state" name="state" placeholder="review-demo-state">
-          </label>
+          <div class="two-up">
+            <label>
+              Client Key
+              <input id="client-key" name="client-key" placeholder="TikTok client key" required>
+            </label>
+            <label>
+              Redirect URI
+              <input id="redirect-uri" name="redirect-uri" required>
+            </label>
+          </div>
+          <div class="two-up">
+            <label>
+              Scope
+              <input id="scope" name="scope" value="user.info.basic,video.publish" required>
+            </label>
+            <label>
+              State
+              <input id="state" name="state" placeholder="review-demo-state">
+            </label>
+          </div>
           <div class="actions">
             <button class="primary" type="submit">Continue with TikTok</button>
             <button class="secondary" type="button" id="reset-defaults">Reset Defaults</button>
           </div>
         </form>
-        <p class="status" id="status"></p>
+        <p class="status" id="oauth-status"></p>
       </section>
 
       <section class="panel">
-        <h2>Review Notes</h2>
+        <h2>2. Review Notes</h2>
         <div class="stack">
-          <p>Purpose: users sign in to our web application using their TikTok account.</p>
-          <p>Scope usage: <code>user.info.basic</code> is requested only to identify the user after consent and to retrieve basic profile information needed for authentication.</p>
-          <p>Expected review flow: open this page, click the TikTok login button, approve access on TikTok, and return to the callback page where the authorization response is displayed.</p>
+          <p><strong>Purpose:</strong> authorized users sign in with TikTok, then prepare and submit a content posting request for sandbox/review demonstration.</p>
+          <p><strong>Requested scopes:</strong> basic user identity for login and the posting scope needed for authorized content publishing.</p>
+          <p><strong>Expected review flow:</strong> open this page, start TikTok authorization, approve access, return to the callback page, exchange the code for tokens, then submit a content-posting request from this site.</p>
         </div>
         <div class="note">
           <strong>Registered URLs</strong>
@@ -310,79 +292,371 @@
         </div>
       </section>
     </section>
+
+    <section class="grid">
+      <section class="panel" id="posting-panel">
+        <h2>3. Exchange code and prepare posting</h2>
+        <p>For review/demo, this page can take the authorization code returned by TikTok, exchange it for tokens, and then submit a content posting request. This is intended for sandbox/demo use only.</p>
+        <form id="token-form">
+          <div class="two-up">
+            <label>
+              Authorization Code
+              <input id="auth-code" placeholder="Paste code from callback or use stored code">
+            </label>
+            <label>
+              Client Secret
+              <input id="client-secret" type="password" placeholder="TikTok client secret for sandbox/demo token exchange">
+            </label>
+          </div>
+          <div class="two-up">
+            <label>
+              Token Endpoint
+              <input id="token-endpoint" value="https://open.tiktokapis.com/v2/oauth/token/">
+            </label>
+            <label>
+              Redirect URI (must match OAuth)
+              <input id="token-redirect-uri">
+            </label>
+          </div>
+          <div class="actions">
+            <button class="primary" type="button" id="exchange-token">Exchange code for tokens</button>
+            <button class="secondary" type="button" id="load-callback-code">Load code from callback storage</button>
+          </div>
+        </form>
+        <p class="status" id="token-status"></p>
+        <h3>Token response</h3>
+        <pre id="token-output">No token response yet.</pre>
+      </section>
+
+      <section class="panel">
+        <h2>4. Content Posting demo request</h2>
+        <form id="posting-form">
+          <div class="two-up">
+            <label>
+              Content Posting Endpoint
+              <input id="posting-endpoint" value="https://open.tiktokapis.com/v2/post/publish/video/init/">
+            </label>
+            <label>
+              Access Token
+              <input id="access-token" type="password" placeholder="Paste access token or use exchanged token">
+            </label>
+          </div>
+          <label>
+            Video URL
+            <input id="video-url" placeholder="https://example.com/demo-video.mp4">
+          </label>
+          <label>
+            Caption
+            <textarea id="caption" placeholder="Explain what the video is about"></textarea>
+          </label>
+          <div class="two-up">
+            <label>
+              Privacy Level
+              <select id="privacy-level">
+                <option value="SELF_ONLY">SELF_ONLY</option>
+                <option value="MUTUAL_FOLLOW_FRIENDS">MUTUAL_FOLLOW_FRIENDS</option>
+                <option value="PUBLIC_TO_EVERYONE">PUBLIC_TO_EVERYONE</option>
+              </select>
+            </label>
+            <label>
+              Disable comment / duet / stitch for demo
+              <select id="interaction-mode">
+                <option value="restricted">Restricted</option>
+                <option value="open">Open</option>
+              </select>
+            </label>
+          </div>
+          <div class="actions">
+            <button class="primary" type="button" id="submit-posting">Submit content posting request</button>
+            <button class="secondary" type="button" id="prefill-demo">Prefill demo data</button>
+          </div>
+        </form>
+        <p class="status" id="posting-status"></p>
+        <h3>Posting request / response</h3>
+        <pre id="posting-output">No posting request submitted yet.</pre>
+      </section>
+    </section>
+
+    <section class="panel">
+      <h2>5. Demo checklist for review recording</h2>
+      <ul>
+        <li>Open this site on the registered review domain.</li>
+        <li>Show the TikTok app settings entered into the OAuth panel.</li>
+        <li>Start OAuth and approve the app in TikTok sandbox/review mode.</li>
+        <li>Show that the callback page receives the authorization code.</li>
+        <li>Return here and exchange the code for tokens.</li>
+        <li>Fill in a demo video URL, caption, and privacy settings.</li>
+        <li>Submit the content posting request and show the response on screen.</li>
+      </ul>
+      <div class="note">
+        <strong>Important:</strong> This static site is meant for review/demo visibility. For production, secret handling and token exchange should be moved to a backend service instead of running in the browser.
+      </div>
+    </section>
   </main>
 
   <script>
-    const baseUrl = new URL("./", window.location.href);
-    const callbackUrl = new URL("tiktok/callback.html", baseUrl).href;
-    const fields = {
-      clientKey: document.getElementById("client-key"),
-      redirectUri: document.getElementById("redirect-uri"),
-      scope: document.getElementById("scope"),
-      state: document.getElementById("state")
-    };
-    const storageKey = "tiktok-review-config";
-    const status = document.getElementById("status");
-    const callbackTarget = document.getElementById("default-callback");
+    const baseUrl = new URL('./', window.location.href);
+    const callbackUrl = new URL('tiktok/callback.html', baseUrl).href;
+    const storageKey = 'tiktok-review-config';
+    const callbackStorageKey = 'tiktok-review-callback';
+    const tokenStorageKey = 'tiktok-review-token-response';
 
-    callbackTarget.textContent = callbackUrl;
+    const oauthFields = {
+      clientKey: document.getElementById('client-key'),
+      redirectUri: document.getElementById('redirect-uri'),
+      scope: document.getElementById('scope'),
+      state: document.getElementById('state')
+    };
+
+    const tokenFields = {
+      authCode: document.getElementById('auth-code'),
+      clientSecret: document.getElementById('client-secret'),
+      tokenEndpoint: document.getElementById('token-endpoint'),
+      redirectUri: document.getElementById('token-redirect-uri')
+    };
+
+    const postingFields = {
+      endpoint: document.getElementById('posting-endpoint'),
+      accessToken: document.getElementById('access-token'),
+      videoUrl: document.getElementById('video-url'),
+      caption: document.getElementById('caption'),
+      privacyLevel: document.getElementById('privacy-level'),
+      interactionMode: document.getElementById('interaction-mode')
+    };
+
+    const oauthStatus = document.getElementById('oauth-status');
+    const tokenStatus = document.getElementById('token-status');
+    const postingStatus = document.getElementById('posting-status');
+    const tokenOutput = document.getElementById('token-output');
+    const postingOutput = document.getElementById('posting-output');
+    document.getElementById('default-callback').textContent = callbackUrl;
 
     function randomState() {
-      return "review-" + Math.random().toString(36).slice(2, 12);
-    }
-
-    function loadConfig() {
-      const saved = JSON.parse(localStorage.getItem(storageKey) || "{}");
-      fields.clientKey.value = saved.clientKey || "";
-      fields.redirectUri.value = saved.redirectUri || callbackUrl;
-      fields.scope.value = saved.scope || "user.info.basic";
-      fields.state.value = saved.state || randomState();
+      return 'review-' + Math.random().toString(36).slice(2, 12);
     }
 
     function saveConfig() {
       const config = {
-        clientKey: fields.clientKey.value.trim(),
-        redirectUri: fields.redirectUri.value.trim(),
-        scope: fields.scope.value.trim(),
-        state: fields.state.value.trim()
+        clientKey: oauthFields.clientKey.value.trim(),
+        redirectUri: oauthFields.redirectUri.value.trim(),
+        scope: oauthFields.scope.value.trim(),
+        state: oauthFields.state.value.trim()
       };
       localStorage.setItem(storageKey, JSON.stringify(config));
       return config;
     }
 
-    document.getElementById("oauth-form").addEventListener("submit", function (event) {
+    function loadConfig() {
+      const saved = JSON.parse(localStorage.getItem(storageKey) || '{}');
+      oauthFields.clientKey.value = saved.clientKey || '';
+      oauthFields.redirectUri.value = saved.redirectUri || callbackUrl;
+      oauthFields.scope.value = saved.scope || 'user.info.basic,video.publish';
+      oauthFields.state.value = saved.state || randomState();
+      tokenFields.redirectUri.value = oauthFields.redirectUri.value;
+    }
+
+    function loadCallbackCode() {
+      const saved = JSON.parse(localStorage.getItem(callbackStorageKey) || '{}');
+      if (saved.code) {
+        tokenFields.authCode.value = saved.code;
+        tokenStatus.textContent = 'Loaded authorization code from callback storage.';
+        tokenStatus.className = 'status ok';
+      } else {
+        tokenStatus.textContent = 'No callback code found in local storage yet.';
+        tokenStatus.className = 'status warn';
+      }
+    }
+
+    function persistTokenResponse(data) {
+      localStorage.setItem(tokenStorageKey, JSON.stringify(data));
+      if (data.access_token) {
+        postingFields.accessToken.value = data.access_token;
+      }
+    }
+
+    function loadSavedTokenResponse() {
+      const saved = JSON.parse(localStorage.getItem(tokenStorageKey) || '{}');
+      if (saved && Object.keys(saved).length > 0) {
+        tokenOutput.textContent = JSON.stringify(saved, null, 2);
+        if (saved.access_token && !postingFields.accessToken.value) {
+          postingFields.accessToken.value = saved.access_token;
+        }
+      }
+    }
+
+    document.getElementById('oauth-form').addEventListener('submit', function (event) {
       event.preventDefault();
       const config = saveConfig();
 
       if (!config.clientKey || !config.redirectUri || !config.scope) {
-        status.textContent = "Client Key, Redirect URI, and Scope are required.";
+        oauthStatus.textContent = 'Client Key, Redirect URI, and Scope are required.';
+        oauthStatus.className = 'status warn';
         return;
       }
 
       if (!config.state) {
         config.state = randomState();
-        fields.state.value = config.state;
+        oauthFields.state.value = config.state;
         saveConfig();
       }
 
-      const authorizeUrl = new URL("https://www.tiktok.com/v2/auth/authorize/");
-      authorizeUrl.searchParams.set("client_key", config.clientKey);
-      authorizeUrl.searchParams.set("response_type", "code");
-      authorizeUrl.searchParams.set("scope", config.scope);
-      authorizeUrl.searchParams.set("redirect_uri", config.redirectUri);
-      authorizeUrl.searchParams.set("state", config.state);
+      const authorizeUrl = new URL('https://www.tiktok.com/v2/auth/authorize/');
+      authorizeUrl.searchParams.set('client_key', config.clientKey);
+      authorizeUrl.searchParams.set('response_type', 'code');
+      authorizeUrl.searchParams.set('scope', config.scope);
+      authorizeUrl.searchParams.set('redirect_uri', config.redirectUri);
+      authorizeUrl.searchParams.set('state', config.state);
 
-      status.textContent = "Redirecting to TikTok authorization...";
+      oauthStatus.textContent = 'Redirecting to TikTok authorization...';
+      oauthStatus.className = 'status ok';
       window.location.href = authorizeUrl.toString();
     });
 
-    document.getElementById("reset-defaults").addEventListener("click", function () {
+    document.getElementById('reset-defaults').addEventListener('click', function () {
       localStorage.removeItem(storageKey);
       loadConfig();
-      status.textContent = "Defaults restored.";
+      oauthStatus.textContent = 'Defaults restored.';
+      oauthStatus.className = 'status ok';
+    });
+
+    document.getElementById('load-callback-code').addEventListener('click', function () {
+      loadCallbackCode();
+    });
+
+    document.getElementById('exchange-token').addEventListener('click', async function () {
+      const clientKey = oauthFields.clientKey.value.trim();
+      const authCode = tokenFields.authCode.value.trim();
+      const clientSecret = tokenFields.clientSecret.value.trim();
+      const tokenEndpoint = tokenFields.tokenEndpoint.value.trim();
+      const redirectUri = tokenFields.redirectUri.value.trim();
+
+      if (!clientKey || !authCode || !clientSecret || !tokenEndpoint || !redirectUri) {
+        tokenStatus.textContent = 'Client Key, authorization code, client secret, token endpoint, and redirect URI are required.';
+        tokenStatus.className = 'status warn';
+        return;
+      }
+
+      tokenStatus.textContent = 'Exchanging code for tokens...';
+      tokenStatus.className = 'status';
+      tokenOutput.textContent = 'Waiting for token response...';
+
+      try {
+        const body = new URLSearchParams();
+        body.set('client_key', clientKey);
+        body.set('client_secret', clientSecret);
+        body.set('code', authCode);
+        body.set('grant_type', 'authorization_code');
+        body.set('redirect_uri', redirectUri);
+
+        const response = await fetch(tokenEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          body: body.toString()
+        });
+
+        const text = await response.text();
+        let data;
+        try {
+          data = JSON.parse(text);
+        } catch {
+          data = {raw: text};
+        }
+
+        tokenOutput.textContent = JSON.stringify({status: response.status, data}, null, 2);
+        if (response.ok) {
+          persistTokenResponse(data);
+          tokenStatus.textContent = 'Token exchange completed.';
+          tokenStatus.className = 'status ok';
+        } else {
+          tokenStatus.textContent = 'Token exchange returned a non-OK response. Check the response body.';
+          tokenStatus.className = 'status warn';
+        }
+      } catch (error) {
+        tokenOutput.textContent = JSON.stringify({error: String(error)}, null, 2);
+        tokenStatus.textContent = 'Token exchange failed in the browser. This may require sandbox-specific behavior or backend handling.';
+        tokenStatus.className = 'status warn';
+      }
+    });
+
+    document.getElementById('prefill-demo').addEventListener('click', function () {
+      postingFields.videoUrl.value = postingFields.videoUrl.value || 'https://example.com/demo-video.mp4';
+      postingFields.caption.value = postingFields.caption.value || 'Review demo upload: short informational video posted through TikTok Content Posting API.';
+      postingFields.privacyLevel.value = 'SELF_ONLY';
+      postingFields.interactionMode.value = 'restricted';
+      postingStatus.textContent = 'Demo data inserted.';
+      postingStatus.className = 'status ok';
+    });
+
+    document.getElementById('submit-posting').addEventListener('click', async function () {
+      const endpoint = postingFields.endpoint.value.trim();
+      const accessToken = postingFields.accessToken.value.trim();
+      const videoUrl = postingFields.videoUrl.value.trim();
+      const caption = postingFields.caption.value.trim();
+      const privacyLevel = postingFields.privacyLevel.value;
+      const interactionMode = postingFields.interactionMode.value;
+
+      if (!endpoint || !accessToken || !videoUrl) {
+        postingStatus.textContent = 'Posting endpoint, access token, and video URL are required.';
+        postingStatus.className = 'status warn';
+        return;
+      }
+
+      const requestBody = {
+        post_info: {
+          title: caption,
+          privacy_level: privacyLevel,
+          disable_comment: interactionMode === 'restricted',
+          disable_duet: interactionMode === 'restricted',
+          disable_stitch: interactionMode === 'restricted',
+          video_cover_timestamp_ms: 1000
+        },
+        source_info: {
+          source: 'PULL_FROM_URL',
+          video_url: videoUrl
+        }
+      };
+
+      postingStatus.textContent = 'Submitting content posting request...';
+      postingStatus.className = 'status';
+      postingOutput.textContent = JSON.stringify({request: requestBody}, null, 2);
+
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json; charset=UTF-8',
+            'Authorization': 'Bearer ' + accessToken
+          },
+          body: JSON.stringify(requestBody)
+        });
+
+        const text = await response.text();
+        let data;
+        try {
+          data = JSON.parse(text);
+        } catch {
+          data = {raw: text};
+        }
+
+        postingOutput.textContent = JSON.stringify({status: response.status, request: requestBody, data}, null, 2);
+        if (response.ok) {
+          postingStatus.textContent = 'Content posting request submitted.';
+          postingStatus.className = 'status ok';
+        } else {
+          postingStatus.textContent = 'Posting request returned a non-OK response. Check the response body.';
+          postingStatus.className = 'status warn';
+        }
+      } catch (error) {
+        postingOutput.textContent = JSON.stringify({request: requestBody, error: String(error)}, null, 2);
+        postingStatus.textContent = 'Posting request failed in the browser. This may still be acceptable for demo setup, but production should use a backend.';
+        postingStatus.className = 'status warn';
+      }
     });
 
     loadConfig();
+    loadSavedTokenResponse();
   </script>
 </body>
 </html>

@@ -16,10 +16,7 @@
       --warn: #8a3c1d;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
@@ -42,26 +39,11 @@
       box-shadow: 0 20px 60px rgba(29, 29, 31, 0.08);
     }
 
-    h1, h2 {
-      line-height: 1.2;
-      margin: 0;
-    }
+    h1, h2 { line-height: 1.2; margin: 0; }
+    h1 { margin-bottom: 10px; font-size: clamp(2rem, 5vw, 3.2rem); }
+    h2 { margin: 28px 0 10px; color: var(--accent); font-size: 1.2rem; }
 
-    h1 {
-      margin-bottom: 10px;
-      font-size: clamp(2rem, 5vw, 3.2rem);
-    }
-
-    h2 {
-      margin: 28px 0 10px;
-      color: var(--accent);
-      font-size: 1.2rem;
-    }
-
-    .meta,
-    .muted {
-      color: var(--muted);
-    }
+    .meta, .muted { color: var(--muted); }
 
     .badge {
       display: inline-block;
@@ -71,15 +53,8 @@
       font-size: 0.9rem;
     }
 
-    .success {
-      background: rgba(31, 107, 71, 0.12);
-      color: var(--ok);
-    }
-
-    .warning {
-      background: rgba(138, 60, 29, 0.12);
-      color: var(--warn);
-    }
+    .success { background: rgba(31, 107, 71, 0.12); color: var(--ok); }
+    .warning { background: rgba(138, 60, 29, 0.12); color: var(--warn); }
 
     dl {
       margin: 0;
@@ -88,20 +63,9 @@
       gap: 10px 14px;
     }
 
-    dt {
-      font-weight: 700;
-    }
-
-    dd {
-      margin: 0;
-      overflow-wrap: anywhere;
-    }
-
-    code,
-    pre {
-      font-family: "SFMono-Regular", Menlo, Consolas, monospace;
-    }
-
+    dt { font-weight: 700; }
+    dd { margin: 0; overflow-wrap: anywhere; }
+    code, pre { font-family: "SFMono-Regular", Menlo, Consolas, monospace; }
     pre {
       padding: 16px;
       border: 1px solid var(--line);
@@ -109,16 +73,22 @@
       background: #fff;
       overflow: auto;
       margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
     }
 
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
     a {
       color: var(--accent);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: #fff;
     }
 
     @media (max-width: 700px) {
-      dl {
-        grid-template-columns: 1fr;
-      }
+      dl { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -127,7 +97,7 @@
     <section class="card">
       <div id="badge" class="badge warning">Awaiting TikTok redirect</div>
       <h1>ちょこっと海外バズネタ TikTok OAuth Callback</h1>
-      <p class="meta">This page displays the authorization response returned by TikTok after the user grants or rejects access for ちょこっと海外バズネタ.</p>
+      <p class="meta">This page stores the authorization response returned by TikTok so the main review page can continue the login + content posting demo flow.</p>
 
       <h2>Authorization Result</h2>
       <dl>
@@ -151,30 +121,43 @@
       <pre id="raw-params">{}</pre>
 
       <h2>Next Step</h2>
-      <p class="muted">For production use, the authorization <code>code</code> should be sent to the backend and exchanged for tokens through TikTok's token endpoint. This review page only exposes the callback payload for demonstration for ちょこっと海外バズネタ.</p>
+      <p class="muted">If an authorization code is present, it has been stored in browser local storage for the review demo. Return to the main page to exchange the code for tokens and continue the Content Posting flow.</p>
+      <div class="actions">
+        <a href="../index.html">Return to main review page</a>
+      </div>
     </section>
   </main>
 
   <script>
     const params = new URLSearchParams(window.location.search);
     const entries = Object.fromEntries(params.entries());
-    const code = params.get("code");
-    const error = params.get("error");
-    const badge = document.getElementById("badge");
+    const code = params.get('code');
+    const error = params.get('error');
+    const badge = document.getElementById('badge');
+    const storageKey = 'tiktok-review-callback';
 
-    document.getElementById("code-value").textContent = code || "Not provided";
-    document.getElementById("scopes-value").textContent = params.get("scopes") || "Not provided";
-    document.getElementById("state-value").textContent = params.get("state") || "Not provided";
-    document.getElementById("error-value").textContent = error || "Not provided";
-    document.getElementById("error-description-value").textContent = params.get("error_description") || "Not provided";
-    document.getElementById("raw-params").textContent = JSON.stringify(entries, null, 2);
+    document.getElementById('code-value').textContent = code || 'Not provided';
+    document.getElementById('scopes-value').textContent = params.get('scopes') || 'Not provided';
+    document.getElementById('state-value').textContent = params.get('state') || 'Not provided';
+    document.getElementById('error-value').textContent = error || 'Not provided';
+    document.getElementById('error-description-value').textContent = params.get('error_description') || 'Not provided';
+    document.getElementById('raw-params').textContent = JSON.stringify(entries, null, 2);
+
+    localStorage.setItem(storageKey, JSON.stringify({
+      code: code || '',
+      scopes: params.get('scopes') || '',
+      state: params.get('state') || '',
+      error: error || '',
+      error_description: params.get('error_description') || '',
+      received_at: new Date().toISOString()
+    }));
 
     if (code) {
-      badge.textContent = "Authorization code received";
-      badge.className = "badge success";
+      badge.textContent = 'Authorization code received and stored';
+      badge.className = 'badge success';
     } else if (error) {
-      badge.textContent = "Authorization returned an error";
-      badge.className = "badge warning";
+      badge.textContent = 'Authorization returned an error';
+      badge.className = 'badge warning';
     }
   </script>
 </body>
